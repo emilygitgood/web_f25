@@ -1,0 +1,81 @@
+:root {
+    --base-font-size: 16px;
+    --base-root-size: 16px
+}
+
+.outfit-font {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.color-box {
+     height: 100px;
+    width: 100px;
+}
+
+#box1 {
+    background-color:#FF9710;
+    margin-right: calc(var(--base-root-size)*1.0);
+    margin-left: calc(var(--base-root-size)*1.0);
+
+}
+
+#box2 {
+    background-color:#DB2D2D;
+    margin-right: calc(var(--base-root-size)*1.0);
+
+}
+
+#box3 {
+    background-color:#0E1C36;
+        margin-right: calc(var(--base-root-size)*1.0);
+
+}
+
+#box4 {
+    background-color:#F2F7F2;
+    margin-right: calc(var(--base-root-size)*1.0);
+
+}
+
+#box5 {
+    background-color:#0AD3FF;
+    margin-right: calc(var(--base-root-size)*1.0);
+}
+
+.small-text{
+    font-size: calc(var(--base-font-size) * 0.75);
+}
+
+.white-text{
+    color: #FFFFFF;
+}
+
+.flex {
+    display: flex;
+}
+
+
+h1 {
+    font-size: calc(var(--base-font-size) * 3.0);
+}
+
+h2{
+    font-size: calc(var(--base-font-size) * 2.5);
+}
+
+h3{
+    font-size: calc(var(--base-font-size) * 2.0);
+}
+
+p{
+    font-size: calc(var(--base-font-size) * 1.25);
+}
+
+a:hover {
+  color: red;
+}
+
+input:hover {color:green}
