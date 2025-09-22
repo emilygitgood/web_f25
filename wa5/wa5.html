@@ -1,5 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "stylez.css">
+</head>
+<body>
 <nav class="main-nav">
-  <div class="nav-brand">Community Hub</div>
+  <div class="nav-brand">IDSA Industrial Design Society of America</div>
   <button class="nav-toggle" aria-label="Toggle navigation menu">
     <span></span>
     <span></span>
@@ -12,3 +21,19 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+<script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+    navMenu.classList.remove('show');
+    });
+    });
+ });
+</script>
+</body>
+</html>
