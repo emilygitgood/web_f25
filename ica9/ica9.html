@@ -1,14 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Helvetica, sans-serif;
+        }
+
+        .button {
+            color: black;
+            padding: 16px 32px;
+            text-align: center;
+            display: inline-block;
+            background-color: white;
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: red;
+            color: white;
+            animation-name: button-big;
+            animation-duration: 0.8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-out;
+            position: relative;
+        }
+
+        @keyframes button-big {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.2);
+                background-color: orange;
+            }
+
+        }
+
+    
     </style>
 </head>
+
 <body>
-    
+    <button class="button">PRESS MEEE</button>
+
 </body>
+
 </html>
