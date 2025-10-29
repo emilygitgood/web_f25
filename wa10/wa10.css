@@ -1,0 +1,109 @@
+.mansalva-regular {
+  font-family: "Mansalva", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+    font-family: "Mansalva";
+    box-sizing: border-box;
+  }
+
+footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-small;
+  padding: 20px 50px;
+  color: white;
+}
+  
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+}
+
+.app {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden; 
+}
+
+header {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid orange;
+}
+
+.quotes {
+  padding: 20px 50px;
+  min-height: 200px;
+}
+
+.controls {
+  width: 100%;
+  padding: 20px 50px;
+}
+
+.button {
+  display: block;
+  color: black;
+  border-radius: 4px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}
+
+.twitter {
+  background-color: pink;
+  font-family: "Mansalva";
+  text-decoration: none;
+}
+
+.twitter:hover {
+  background-color: palevioletred;
+}
+
+.new-quote {
+  background-color: orange;
+  font-family: "Mansalva";
+  margin-bottom: 15px;
+}
+
+.new-quote:hover {
+  background-color: lightblue;
+}
+
+.new-quote:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 600px) {
+  .app {
+    width: 100%;
+  }
+  .quote-text {
+    font-size: 18px;
+  }
+}
+
+#js-answer-text {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-top: 20px;
+  color: #333;
+}
