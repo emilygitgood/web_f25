@@ -220,7 +220,7 @@ footer {
 }
 
 .export-button:hover {
-  background-color: darkblue;
+  background-color: #9c7a97;
 }
 
 .clear-button {
@@ -232,7 +232,7 @@ footer {
 }
 
 .clear-button:hover {
-  background-color: darkred;
+  background-color: #777da7;
 }
 
 .favorites-count {
