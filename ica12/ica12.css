@@ -1,0 +1,327 @@
+.mansalva-regular {
+  font-family: "Mansalva", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+    font-family: "Mansalva";
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+h2{
+    font-family: "Mansalva";
+    font-size: x-large;
+}
+
+body{
+    font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+footer {
+  font-size: x-small;
+  padding: 20px 50px;
+}
+  
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden; 
+}
+
+.search-section {
+  padding: 20px 50px;
+  border-bottom: 1px solid #eee;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border: 2px solid orange;
+  border-radius: 8px;
+}
+
+.controls {
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: row; 
+  justify-content: center;
+  gap: 10px;
+}
+
+.button {
+  border-radius: 4px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  width: 200px; 
+}
+
+.new-quote {
+  /* background-color:; */
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: black;
+}
+
+.new-quote:hover {
+  background-color: lightsalmon;
+}
+
+.button-feed {
+  background-color: papayawhip;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  color: black;
+}
+
+.button-feed:hover {
+  background-color: peachpuff;
+}
+
+.search-button {
+  /* background-color: orange; */
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: black;
+}
+
+.search-button:hover {
+  background-color: rgb(89, 141, 89);
+}
+
+.book-display {
+  padding: 20px 50px;
+  min-height: 200px;
+}
+
+.book-card {
+  background-color: white;
+  border: 2px solid orange;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.book-content {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.book-cover {
+  width: 100px;
+  height: auto;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.no-cover {
+  width: 100px;
+  height: 140px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.book-details {
+  flex: 1;
+}
+
+.book-title {
+  font-family: "Mansalva";
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.book-author {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.book-year {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.add-favorite-btn {
+  background-color: papayawhip;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-top: 10px;
+  width: auto;
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+.add-favorite-btn:hover {
+  background-color: peachpuff;
+}
+
+.privacy-section {
+  padding: 20px 50px;
+  background-color: #f9f9f9;
+  border-top: 2px solid orange;
+}
+
+.privacy-section h3 {
+  font-family: "Mansalva";
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.fav-info {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.data-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.export-button {
+  background-color: #2196F3;
+  color: white;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  flex: 1;
+  min-width: 150px;
+}
+
+.export-button:hover {
+  background-color: darkblue;
+}
+
+.clear-button {
+  background-color: #f44336;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  flex: 1;
+  min-width: 150px;
+}
+
+.clear-button:hover {
+  background-color: darkred;
+}
+
+.favorites-count {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.favorites-list {
+  margin-top: 20px;
+}
+
+.favorite-item {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border-left: 4px solid orange;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.favorite-item img {
+  width: 60px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.favorite-info {
+  flex: 1;
+}
+
+.favorite-title {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.favorite-author {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.favorite-year {
+  color: #999;
+  font-size: 12px;
+}
+
+.remove-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.remove-btn:hover {
+  background-color: #da190b;
+}
+
+@media screen and (max-width: 600px) {
+  .app {
+    width: 100%;
+  }
+  
+  .search-section,
+  .book-display,
+  .controls,
+  .privacy-section {
+    padding: 15px 25px;
+  }
+
+  .data-controls {
+    flex-direction: column;
+  }
+
+  .book-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-cover,
+  .no-cover {
+    width: 120px;
+  }
+}
