@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Finder - Search and Save Your Favorite Books</title>
+    <link rel="stylesheet" href="wa12.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="app">
+            <h1>Book Finder!</h1>
+        </div>
+
+        <div class="search-section">
+            <form id="search-form" role="search">
+                <label for="search-input" class="search-label">Search for books:</label>
+                <input type="text" 
+                       id="search-input" 
+                       placeholder="Enter a book title or author name" 
+                       class="search-input"
+                       aria-describedby="search-hint">
+                <span id="search-hint" class="sr-only">Press Enter or click the search button to find books</span>
+            </form>
+        </div>
+
+        <div class="book-display">
+            <div id="book-info" aria-live="polite" aria-atomic="true">
+                <p class="initial-message">Search for a book or get a random recommendation to get started!</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button type="button" id="random-btn" class="button new-quote" aria-label="Get a random book recommendation">
+                Randomize A Book!
+            </button>
+
+            <button type="submit" form="search-form" id="search-btn" class="button search-button" aria-label="Search for books">
+                Search Book Titles
+            </button>
+            <button type="button" id="search-btn" class="button search-button"></button>
+        </div>
+
+        <section class="privacy-section" aria-labelledby="favorites-heading">
+            <h2 id="favorites-heading">Favorites</h2>
+            <p class="fav-info">
+                Your favorites can be stored, exported, or deleted here!
+            </p>
+
+            <div class="data-controls">
+                <button type="button" id="view-favorites-btn" class="button-feed" aria-label="View all saved favorite books">
+                    View My Favorites
+                </button>
+                <button type="button" id="clear-btn" class="button clear-button" aria-label="Clear all favorite books">
+                    Clear All Favorites
+                </button>
+                <button type="button" id="export-btn" class="button export-button" aria-label="Export favorites as JSON file">
+                    Export My Favorites
+                </button>
+            </div>
+            <p class="favorites-count" aria-live="polite">
+                You have <span id="count">0</span> saved favorite<span id="plural">s</span>!
+            </p>
+        </section>
+
+        <footer>
+            <strong>Privacy Information:</strong> Your favorites are stored locally on your device only. Nothing is sent to other servers!
+        </footer>
+    </main>
+
+    <script src="wa12.js"></script>
+</body>
+
+</html>
