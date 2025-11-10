@@ -1,4 +1,3 @@
-const searchForm = document.querySelector("#search-form");
 const searchBtn = document.querySelector("#search-btn");
 const randomBtn = document.querySelector("#random-btn");
 const searchInput = document.querySelector("#search-input");
@@ -7,40 +6,33 @@ const clearBtn = document.querySelector("#clear-btn");
 const exportBtn = document.querySelector("#export-btn");
 const viewFavoritesBtn = document.querySelector("#view-favorites-btn");
 const favoritesCount = document.querySelector("#count");
-const pluralSpan = document.querySelector("#plural");
 
 let currentBooks = [];
 let favorites = [];
 
-// Load favorites on page load
 loadFavorites();
 
-// Event listeners
-searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    searchBooks();
-});
-
-searchBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    searchBooks();
-});
-
+searchBtn.addEventListener('click', searchBooks);
 randomBtn.addEventListener('click', getRandomBook);
 clearBtn.addEventListener('click', clearFavorites);
 exportBtn.addEventListener('click', exportFavorites);
 viewFavoritesBtn.addEventListener('click', viewFavorites);
 
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        searchBooks();
+    }
+});
+
 async function searchBooks() {
     const query = searchInput.value.trim();
     
     if (!query) {
-        showError('Please enter a book title or author to search!');
-        searchInput.focus();
+        alert('Please enter a book title or author to search!');
         return;
     }
     
-    showLoading('Searching for books...');
+    bookInfo.innerHTML = '<p>Searching for books...</p>';
     
     try {
         const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=10`);
@@ -60,12 +52,12 @@ async function searchBooks() {
         
     } catch (error) {
         console.error('Error fetching books:', error);
-        showError('Failed to fetch books. Please check your internet connection and try again!');
+        bookInfo.innerHTML = '<p style="color: red;">Failed to fetch books. Please check your internet connection and try again!</p>';
     }
 }
 
 async function getRandomBook() {
-    showLoading('Finding a random book...');
+    bookInfo.innerHTML = '<p>Finding a random book...</p>';
     
     const subjects = ['fantasy', 'science fiction', 'mystery', 'romance', 'history', 'adventure', 'classic', 'poetry'];
     const randomSubject = subjects[Math.floor(Math.random() * subjects.length)];
@@ -89,72 +81,39 @@ async function getRandomBook() {
         
     } catch (error) {
         console.error('Error fetching random book:', error);
-        showError('Failed to fetch a random book. Please check your internet connection and try again!');
+        bookInfo.innerHTML = '<p style="color: red;">Failed to fetch a random book. Please check your internet connection and try again!</p>';
     }
 }
 
 function displayBooks(books) {
     bookInfo.innerHTML = '';
     
-    books.forEach((book, index) => {
+    books.forEach(book => {
         const bookCard = document.createElement('div');
         bookCard.className = 'book-card';
         
-        // Sanitize data
-        const title = sanitizeText(book.title || 'Unknown Title');
-        const author = book.author_name ? sanitizeText(book.author_name.join(', ')) : 'Unknown Author';
-        const publishYear = sanitizeText(book.first_publish_year || 'Unknown');
+        const title = book.title || 'Unknown Title';
+        const author = book.author_name ? book.author_name.join(', ') : 'Unknown Author';
+        const publishYear = book.first_publish_year || 'Unknown';
         const coverId = book.cover_i;
         
-        // Create content container
-        const bookContent = document.createElement('div');
-        bookContent.className = 'book-content';
+        bookCard.innerHTML = `
+            <div class="book-content">
+                ${coverId ? 
+                    `<img src="https://covers.openlibrary.org/b/id/${coverId}-M.jpg" alt="${title} cover" class="book-cover">` :
+                    '<div class="no-cover">No Cover Available</div>'
+                }
+                <div class="book-details">
+                    <h3 class="book-title">${title}</h3>
+                    <p class="book-author">By: ${author}</p>
+                    <p class="book-year">First Published: ${publishYear}</p>
+                    <button class="button add-favorite-btn" onclick="addToFavorites('${title.replace(/'/g, "\\'")}', '${author.replace(/'/g, "\\'")}', '${coverId || ''}', '${publishYear}')">
+                        Add to Favorites
+                    </button>
+                </div>
+            </div>
+        `;
         
-        // Add cover image or placeholder
-        if (coverId) {
-            const img = document.createElement('img');
-            img.src = `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`;
-            img.alt = `Book cover for ${title}`;
-            img.className = 'book-cover';
-            bookContent.appendChild(img);
-        } else {
-            const noCover = document.createElement('div');
-            noCover.className = 'no-cover';
-            noCover.textContent = 'No Cover Available';
-            bookContent.appendChild(noCover);
-        }
-        
-        // Create details section
-        const bookDetails = document.createElement('div');
-        bookDetails.className = 'book-details';
-        
-        const titleElement = document.createElement('h3');
-        titleElement.className = 'book-title';
-        titleElement.textContent = title;
-        
-        const authorElement = document.createElement('p');
-        authorElement.className = 'book-author';
-        authorElement.textContent = `By: ${author}`;
-        
-        const yearElement = document.createElement('p');
-        yearElement.className = 'book-year';
-        yearElement.textContent = `First Published: ${publishYear}`;
-        
-        const addButton = document.createElement('button');
-        addButton.className = 'button add-favorite-btn';
-        addButton.textContent = 'Add to Favorites';
-        addButton.setAttribute('aria-label', `Add ${title} to favorites`);
-        addButton.addEventListener('click', () => {
-            addToFavorites(title, author, coverId, publishYear);
-        });
-        
-        bookDetails.appendChild(titleElement);
-        bookDetails.appendChild(authorElement);
-        bookDetails.appendChild(yearElement);
-        bookDetails.appendChild(addButton);
-        
-        bookContent.appendChild(bookDetails);
-        bookCard.appendChild(bookContent);
         bookInfo.appendChild(bookCard);
     });
 }
@@ -187,58 +146,25 @@ function viewFavorites() {
         return;
     }
     
-    bookInfo.innerHTML = '';
-    
-    const heading = document.createElement('h2');
-    heading.style.fontFamily = 'Mansalva';
-    heading.style.color = 'orange';
-    heading.textContent = 'Your Favorite Books';
-    bookInfo.appendChild(heading);
+    bookInfo.innerHTML = '<h2 style="font-family: Mansalva; color: orange;">Your Favorite Books</h2>';
     
     favorites.forEach((fav, index) => {
         const favCard = document.createElement('div');
         favCard.className = 'favorite-item';
         
-        if (fav.coverId) {
-            const img = document.createElement('img');
-            img.src = `https://covers.openlibrary.org/b/id/${fav.coverId}-S.jpg`;
-            img.alt = `Book cover for ${fav.title}`;
-            favCard.appendChild(img);
-        } else {
-            const noCover = document.createElement('div');
-            noCover.className = 'no-cover-small';
-            noCover.textContent = 'No Cover';
-            favCard.appendChild(noCover);
-        }
+        favCard.innerHTML = `
+            ${fav.coverId ? 
+                `<img src="https://covers.openlibrary.org/b/id/${fav.coverId}-S.jpg" alt="${fav.title} cover">` :
+                '<div class="no-cover-small">No Cover</div>'
+            }
+            <div class="favorite-info">
+                <div class="favorite-title">${fav.title}</div>
+                <div class="favorite-author">${fav.author}</div>
+                <div class="favorite-year">Published: ${fav.year}</div>
+            </div>
+            <button class="remove-btn" onclick="removeFavorite(${index})">Remove</button>
+        `;
         
-        const favInfo = document.createElement('div');
-        favInfo.className = 'favorite-info';
-        
-        const titleDiv = document.createElement('div');
-        titleDiv.className = 'favorite-title';
-        titleDiv.textContent = fav.title;
-        
-        const authorDiv = document.createElement('div');
-        authorDiv.className = 'favorite-author';
-        authorDiv.textContent = fav.author;
-        
-        const yearDiv = document.createElement('div');
-        yearDiv.className = 'favorite-year';
-        yearDiv.textContent = `Published: ${fav.year}`;
-        
-        favInfo.appendChild(titleDiv);
-        favInfo.appendChild(authorDiv);
-        favInfo.appendChild(yearDiv);
-        
-        // Add remove button
-        const removeBtn = document.createElement('button');
-        removeBtn.className = 'remove-btn';
-        removeBtn.textContent = 'Remove';
-        removeBtn.setAttribute('aria-label', `Remove ${fav.title} from favorites`);
-        removeBtn.addEventListener('click', () => removeFavorite(index));
-        
-        favCard.appendChild(favInfo);
-        favCard.appendChild(removeBtn);
         bookInfo.appendChild(favCard);
     });
 }
@@ -273,47 +199,28 @@ function exportFavorites() {
         return;
     }
     
-    try {
-        const dataStr = JSON.stringify(favorites, null, 2);
-        const dataBlob = new Blob([dataStr], { type: 'application/json' });
-        const url = URL.createObjectURL(dataBlob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'my-favorite-books.json';
-        link.click();
-        URL.revokeObjectURL(url);
-    } catch (error) {
-        console.error('Error exporting favorites:', error);
-        alert('Failed to export favorites. Please try again.');
-    }
+    const dataStr = JSON.stringify(favorites, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'my-favorite-books.json';
+    link.click();
+    URL.revokeObjectURL(url);
 }
 
 function saveFavorites() {
-    try {
-        localStorage.setItem('bookFavorites', JSON.stringify(favorites));
-    } catch (error) {
-        console.error('Error saving to localStorage:', error);
-        alert('Failed to save favorites. Your browser storage may be full.');
-    }
+    localStorage.setItem('bookFavorites', JSON.stringify(favorites));
 }
 
 function loadFavorites() {
-    try {
-        const saved = localStorage.getItem('bookFavorites');
-        if (saved) {
-            favorites = JSON.parse(saved);
-        }
-    } catch (error) {
-        console.error('Error loading favorites:', error);
-        favorites = [];
+    const saved = localStorage.getItem('bookFavorites');
+    if (saved) {
+        favorites = JSON.parse(saved);
     }
     updateFavoritesCount();
 }
 
 function updateFavoritesCount() {
     favoritesCount.textContent = favorites.length;
-    // Update plural/singular
-    if (pluralSpan) {
-        pluralSpan.textContent = favorites.length === 1 ? '' : 's';
-    }
 }
