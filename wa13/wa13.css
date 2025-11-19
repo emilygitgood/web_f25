@@ -432,3 +432,116 @@ footer {
     width: 100%;
   }
 }
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #555;
+}
+
+.theme-toggle:focus {
+  outline: 3px solid #4A90E2;
+  outline-offset: 2px;
+}
+
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .app {
+  background-color: #2d2d2d;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+  color: #ffa500;
+}
+
+body.dark-mode .search-section {
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #444;
+}
+
+body.dark-mode .search-input {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border-color: #ff8c00;
+}
+
+body.dark-mode .search-label {
+  color: white;
+}
+
+body.dark-mode .book-card {
+  background-color: #2d2d2d;
+  border-color: #ff8c00;
+}
+
+body.dark-mode .book-title {
+  color: #ffa500;
+}
+
+body.dark-mode .book-author,
+body.dark-mode .book-year {
+  color: #b0b0b0;
+}
+
+body.dark-mode .no-cover,
+body.dark-mode .no-cover-small {
+  background-color: #3a3a3a;
+  color: #888;
+  border-color: #555;
+}
+
+body.dark-mode .privacy-section {
+  background-color: #2d2d2d;
+  border-top-color: #ff8c00;
+}
+
+body.dark-mode .fav-info,
+body.dark-mode .favorites-count {
+  color: #b0b0b0;
+}
+
+body.dark-mode .favorite-item {
+  background-color: #3a3a3a;
+  border-left-color: #ff8c00;
+}
+
+body.dark-mode .favorite-title {
+  color: #ffa500;
+}
+
+body.dark-mode .favorite-author,
+body.dark-mode .favorite-year {
+  color: #b0b0b0;
+}
+
+body.dark-mode footer {
+  background-color: #2d2d2d;
+  color: #b0b0b0;
+  border-top-color: #444;
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #ffa500;
+  color: #1a1a1a;
+}
+
+body.dark-mode .theme-toggle:hover {
+  background-color: #ff8c00;
+}
