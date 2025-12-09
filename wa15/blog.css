@@ -1,0 +1,84 @@
+.blog-post-page {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 120px var(--spacing-md) var(--spacing-xl);
+}
+
+.post-header {
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--beige);
+    padding-bottom: var(--spacing-lg);
+}
+
+.post-header .post-date {
+    font-family: var(--font-accent);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--orange);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.post-header h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--dark-brown);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+.post-intro {
+    font-size: 1.25rem;
+    color: var(--medium-brown);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.post-content {
+    margin-bottom: var(--spacing-xl);
+}
+
+.post-content p {
+    font-size: 1.125rem;
+    color: var(--dark-brown);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.post-content h2 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--dark-brown);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.back-link {
+    font-family: var(--font-accent);
+    font-size: 0.875rem;
+    color: var(--medium-brown);
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: orange
+}
+
+@media (max-width: 768px) {
+    .post-header h1 {
+        font-size: 2.25rem;
+    }
+    
+    .post-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .post-content p {
+        font-size: 1rem;
+    }
+}
